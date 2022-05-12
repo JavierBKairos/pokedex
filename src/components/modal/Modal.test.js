@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Modal } from './Modal';
 
-test('should show login form', () => {
+test('Modal renders', () => {
   const spyFn = jest.fn();
 
   const props = {
