@@ -10,7 +10,7 @@ test('Modal renders', () => {
     onClickClose: spyFn,
   };
 
-  render(<Modal {...props} />);
+  expect(render(<Modal {...props} />)).toMatchSnapshot();
 
   screen.getByText(props.title);
   screen.getByText(props.description);
