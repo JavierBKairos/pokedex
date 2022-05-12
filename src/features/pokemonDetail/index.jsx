@@ -7,11 +7,7 @@ export const PokemonDetail = ({ listaDeCapturados, setListaDeCapturados }) => {
   const params = useParams();
   const navigate = useNavigate();
 
-  const [pokemonInfo, setPokemonInfo] = useState();
-
-  useEffect(() => {
-    getPokemonDetail(params.pokemonName).then(setPokemonInfo);
-  }, [params.pokemonName]);
+  const pokemonInfo = useFetchPokemonInfo(params.pokemonName);
 
   return pokemonInfo ? (
     <div>
@@ -34,3 +30,13 @@ export const PokemonDetail = ({ listaDeCapturados, setListaDeCapturados }) => {
     <div>Loading...</div>
   );
 };
+
+function useFetchPokemonInfo(pokemonName) {
+  const [pokemonInfo, setPokemonInfo] = useState();
+
+  useEffect(() => {
+    getPokemonDetail(pokemonName).then(setPokemonInfo);
+  }, [pokemonName]);
+
+  return pokemonInfo;
+}
