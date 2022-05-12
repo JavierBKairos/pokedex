@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPokemonDetail } from '../../services/pokemon';
+import ReactDOM from 'react-dom';
 
 export const PokemonDetail = ({ listaDeCapturados, setListaDeCapturados }) => {
   const params = useParams();
@@ -24,6 +25,10 @@ export const PokemonDetail = ({ listaDeCapturados, setListaDeCapturados }) => {
       <div>
         <img src={pokemonInfo.sprites.front_default} alt={pokemonInfo.name}></img>
       </div>
+      {ReactDOM.createPortal(
+        <div>Out of root: {params.pokemonName}</div>,
+        document.querySelector('#modal')
+      )}
     </div>
   ) : (
     <div>Loading...</div>
